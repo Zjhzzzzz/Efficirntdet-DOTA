@@ -68,8 +68,8 @@ class splitbase():
         self.subsize = subsize
         self.slide = self.subsize - self.gap
         self.thresh = thresh
-        self.imagepath = os.path.join(self.basepath, 'images')
-        self.labelpath = os.path.join(self.basepath, 'labelTxt')
+        self.imagepath = os.path.join(self.basepath, 'images', 'images')
+        self.labelpath = os.path.join(self.basepath, 'labelTxt', 'labelTxt')
         self.outimagepath = os.path.join(self.outpath, 'images')
         self.outlabelpath = os.path.join(self.outpath, 'labelTxt')
         self.choosebestpoint = choosebestpoint
