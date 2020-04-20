@@ -1,6 +1,7 @@
 import os
 import argparse
 import ImgSplit_multi_process
+import SplitOnlyImage_multi_process
 from DOTAdata import *
 
 wordname_15 = ['plane', 'baseball-diamond', 'bridge', 'ground-track-field', 'small-vehicle', 'large-vehicle', 'ship', 'tennis-court',
