@@ -11,7 +11,7 @@ from pycocotools.cocoeval import COCOeval
 from backbone import EfficientDetBackbone
 from efficientdet.utils import BBoxTransform, ClipBoxes
 from utils.utils import preprocess, invert_affine, postprocess
-
+from train import ModelWithLoss
 ap = argparse.ArgumentParser()
 ap.add_argument('-p', '--project', type=str, default='DOTA', help='project file that contains parameters')
 ap.add_argument('-c', '--compound_coef', type=int, default=0, help='coefficients of efficientdet')
@@ -133,8 +133,8 @@ def _eval(coco_gt, image_ids, pred_json_path):
 
 if __name__ == '__main__':
     SET_NAME = params['val_set']
-    VAL_GT = f'datasets/annotations/instances_{SET_NAME}.json'
-    VAL_IMGS = f'datasets/{SET_NAME}/'
+    VAL_GT = f'datasets/{project_name}/annotations/instances_{SET_NAME}.json'
+    VAL_IMGS = f'datasets/{project_name}/{SET_NAME}/'
     MAX_IMAGES = 10000
     coco_gt = COCO(VAL_GT)
     image_ids = coco_gt.getImgIds()[:MAX_IMAGES]
@@ -155,3 +155,5 @@ if __name__ == '__main__':
         image_ids = evaluate_coco(VAL_IMGS, SET_NAME, image_ids, coco_gt, model)
 
     _eval(coco_gt, image_ids, f'{SET_NAME}_bbox_results.json')
+
+    # model = ModelWithLoss(model, False)
